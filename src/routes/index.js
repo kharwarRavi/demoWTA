@@ -2,8 +2,8 @@ import React, { useState, Fragment } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PublicRoute from "./publicRoute";
 import AuthenticatedRoute from "./authenticatedRoute";
-import PageNotFound from "../scenes/PageNotFound";
-import Login from "../scenes/Login";
+import PageNotFound from "../scenes/pageNotFound";
+import Login from "../scenes/login";
 import Header from "../components/header";
 import SideBar from "../components/sidebar";
 

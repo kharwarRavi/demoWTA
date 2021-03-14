@@ -1,12 +1,12 @@
-import { applyMiddleware, createStore, compose } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 import storage from "redux-persist/lib/storage";
 import rootSaga from "./rootSaga";
-import { createBrowserHistory } from 'history';
+import { createBrowserHistory } from "history";
 import rootReducer from "./rootReducer";
 import middleware, { sagaMiddleware } from "./middleware";
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from "redux-devtools-extension";
 
 export const history = createBrowserHistory();
 //========================================
@@ -41,14 +41,10 @@ const composedEnhancers = composeWithDevTools(
 // Store Instantiation and HMR Setup
 // ======================================================
 const configStore = (initialState = {}) => {
-  const store = createStore(
-    reducer,
-    initialState,
-    composedEnhancers
-  );
+  const store = createStore(reducer, initialState, composedEnhancers);
 
   sagaMiddleware.run(rootSaga);
-  
+
   return {
     persistor: persistStore(store),
     store,

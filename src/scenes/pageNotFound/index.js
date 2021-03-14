@@ -1,5 +1,5 @@
 import React from "react";
-import LinkView from "../../components/LinkView";
+import LinkView from "../../components/linkView";
 // import { Typography, Grid } from "@material-ui/core";
 
 const PageNotFound = () => (

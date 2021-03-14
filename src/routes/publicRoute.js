@@ -28,7 +28,7 @@ PublicRoute.propTypes = {
 };
 
 PublicRoute.defaultProps = {
-  to: "/jobs"
+  to: "/"
 };
 
 export default PublicRoute;
