@@ -3,30 +3,32 @@ import CustomButton from "../../components/customButton";
 import LoginLayout from "../../components/layout/login";
 import TextField from "../../components/textField";
 
-const Login = (props) => {
+const ForgotPassword = (props) => {
   return (
     <LoginLayout>
       <div className="loginContent">
-        <p className="loginText">Login to the Dashboard</p>
+        <p className="loginText">Forgot Password?</p>
         <TextField type="text" label="Username" />
-        <TextField type="password" label="Password" />
-        <p
-          className="forgotPassword"
-          onClick={() => props.history.push("forgot-password")}
-        >
-          Forget Password
-        </p>
+        <div className="linkContent">
+          <p
+            className="forgotPassword"
+            onClick={() => props.history.push("reset-password")}
+          >
+            Resend Link
+          </p>
+          <p className="forgotPassword">Enter Password</p>
+        </div>
       </div>
       <div className="LoginFooter">
         <CustomButton size="lg" variant="default">
-          NEW? SIGNUP
+          CANCEL
         </CustomButton>
         <CustomButton size="lg" variant="primary">
-          LOGIN NOW
+          RESET
         </CustomButton>
       </div>
     </LoginLayout>
   );
 };
 
-export default Login;
+export default ForgotPassword;

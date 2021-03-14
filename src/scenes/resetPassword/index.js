@@ -3,30 +3,28 @@ import CustomButton from "../../components/customButton";
 import LoginLayout from "../../components/layout/login";
 import TextField from "../../components/textField";
 
-const Login = (props) => {
+const ResetPassword = () => {
   return (
     <LoginLayout>
       <div className="loginContent">
-        <p className="loginText">Login to the Dashboard</p>
-        <TextField type="text" label="Username" />
-        <TextField type="password" label="Password" />
-        <p
-          className="forgotPassword"
-          onClick={() => props.history.push("forgot-password")}
-        >
-          Forget Password
+        <p className="loginText">Enter New Password</p>
+        <p className="forgotPassword">
+          Your password must contain atleast 12 characters with alphabets &
+          numbericals
         </p>
+        <TextField type="password" label="Password" />
+        <TextField type="password" label="Verify Password" />
       </div>
       <div className="LoginFooter">
         <CustomButton size="lg" variant="default">
-          NEW? SIGNUP
+          CANCEL
         </CustomButton>
         <CustomButton size="lg" variant="primary">
-          LOGIN NOW
+          SAVE
         </CustomButton>
       </div>
     </LoginLayout>
   );
 };
 
-export default Login;
+export default ResetPassword;

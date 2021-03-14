@@ -6,6 +6,8 @@ import PageNotFound from "../scenes/pageNotFound";
 import Login from "../scenes/login";
 import Header from "../components/header";
 import SideBar from "../components/sidebar";
+import ResetPassword from "../scenes/resetPassword";
+import ForgotPassword from "../scenes/forgotPassword";
 
 const Routes = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -35,6 +37,20 @@ const Routes = () => {
           path="/"
           exact
           component={Login}
+          handleEvent={handleLogin}
+        />
+        <PublicRoute
+          isAuthenticated={isAuthenticated}
+          path="/forgot-password"
+          exact
+          component={ForgotPassword}
+          handleEvent={handleLogin}
+        />
+        <PublicRoute
+          isAuthenticated={isAuthenticated}
+          path="/reset-password"
+          exact
+          component={ResetPassword}
           handleEvent={handleLogin}
         />
         {/* <AuthenticatedRoute
