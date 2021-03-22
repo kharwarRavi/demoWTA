@@ -2,7 +2,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 export class Login {
   static login = (action) => {
-    return fetch(`${API_URL}/login`, {
+    return fetch(`${API_URL}/user/login`, {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(action.payload),

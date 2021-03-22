@@ -2,8 +2,13 @@ import React from "react";
 import CustomButton from "../../components/customButton";
 import LoginLayout from "../../components/layout/login";
 import TextField from "../../components/textField";
+import { loginSaga } from "../../store/sagas";
 
 const Login = (props) => {
+  const handleLogin = () => {
+    loginSaga()
+  };
+
   return (
     <LoginLayout>
       <div className="loginContent">
@@ -18,10 +23,13 @@ const Login = (props) => {
         </p>
       </div>
       <div className="LoginFooter">
-        <CustomButton size="lg" variant="default">
+        <CustomButton
+          className="btn-lg btn-default"
+          onClick={() => props.history.push("/signup")}
+        >
           NEW? SIGNUP
         </CustomButton>
-        <CustomButton size="lg" variant="primary">
+        <CustomButton className="btn-lg btn-primary" onClick={handleLogin}>
           LOGIN NOW
         </CustomButton>
       </div>

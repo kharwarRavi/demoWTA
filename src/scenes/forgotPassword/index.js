@@ -16,14 +16,14 @@ const ForgotPassword = (props) => {
           >
             Resend Link
           </p>
-          <p className="forgotPassword">Enter Password</p>
+          <p className="forgotPassword" onClick={() => props.history.push("/")}>Enter Password</p>
         </div>
       </div>
       <div className="LoginFooter">
-        <CustomButton size="lg" variant="default">
+        <CustomButton className="btn-lg btn-default">
           CANCEL
         </CustomButton>
-        <CustomButton size="lg" variant="primary">
+        <CustomButton className="btn-lg btn-primary">
           RESET
         </CustomButton>
       </div>

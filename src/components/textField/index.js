@@ -16,7 +16,7 @@ const TextField = ({ type, label = null, onChange }) => {
         value={inputValue}
         name="input-form"
         onChange={handleChange}
-        class="inputclass"
+        className="inputclass"
       />
     </Fragment>
   );

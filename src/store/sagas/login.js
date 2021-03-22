@@ -7,23 +7,6 @@ function* login(action) {
     const response = yield call(Login.login, action);
     if (response.status === 200 && !response.msg) {
       const user = yield response.json();
-    //   let userPriviligeObj = {};
-    //   Object.keys(userPriviliges).forEach((key) => {
-    //     if (
-    //       (user.role.privilege & userPriviliges[key]) ===
-    //       userPriviliges[key]
-    //     ) {
-    //       userPriviligeObj = {
-    //         ...userPriviligeObj,
-    //         [key]: true,
-    //       };
-    //     } else {
-    //       userPriviligeObj = {
-    //         ...userPriviligeObj,
-    //         [key]: false,
-    //       };
-    //     }
-    //   });
       yield put({
         type: types.LOGIN_SUCCESS,
         payload: {
@@ -33,7 +16,6 @@ function* login(action) {
           name: user.name,
           role: user.role,
           username: user.username,
-        //   userPriviliges: userPriviligeObj,
         },
       });
     } else if (response.msg && response.msg === "Token has expired") {
@@ -57,7 +39,7 @@ function* logout(action) {
   try {
     const { data, error } = yield call(Login.logout, action.payload);
     if (data.msg === "Successfully logged out") {
-      // localStorage.clear();
+      localStorage.clear();
       yield put({
         type: types.USER_LOGOUT_SUCCESS,
         payload: data.msg,

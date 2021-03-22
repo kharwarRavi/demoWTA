@@ -16,10 +16,10 @@ const ResetPassword = () => {
         <TextField type="password" label="Verify Password" />
       </div>
       <div className="LoginFooter">
-        <CustomButton size="lg" variant="default">
+        <CustomButton className="btn-lg btn-default">
           CANCEL
         </CustomButton>
-        <CustomButton size="lg" variant="primary">
+        <CustomButton className="btn-lg btn-primary">
           SAVE
         </CustomButton>
       </div>

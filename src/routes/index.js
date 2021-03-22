@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PublicRoute from "./publicRoute";
 import AuthenticatedRoute from "./authenticatedRoute";
@@ -8,6 +8,10 @@ import Header from "../components/header";
 import SideBar from "../components/sidebar";
 import ResetPassword from "../scenes/resetPassword";
 import ForgotPassword from "../scenes/forgotPassword";
+import Employees from "../scenes/employees";
+import Organizations from "../scenes/organizations";
+import Settings from "../scenes/settings";
+import Users from "../scenes/users";
 
 const Routes = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -22,50 +26,78 @@ const Routes = () => {
   return (
     <Router>
       {isAuthenticated && (
-        <Fragment>
-          <Header
-            open={open}
-            setOpen={setDrawerOpen}
-            setAuth={setIsAuthenticated}
-          />
-          <SideBar open={open} setOpen={setDrawerOpen} />
-        </Fragment>
+        <Header
+          open={open}
+          setOpen={setDrawerOpen}
+          setAuth={setIsAuthenticated}
+        />
       )}
-      <Switch>
-        <PublicRoute
-          isAuthenticated={isAuthenticated}
-          path="/"
-          exact
-          component={Login}
-          handleEvent={handleLogin}
-        />
-        <PublicRoute
-          isAuthenticated={isAuthenticated}
-          path="/forgot-password"
-          exact
-          component={ForgotPassword}
-          handleEvent={handleLogin}
-        />
-        <PublicRoute
-          isAuthenticated={isAuthenticated}
-          path="/reset-password"
-          exact
-          component={ResetPassword}
-          handleEvent={handleLogin}
-        />
-        {/* <AuthenticatedRoute
-          isAuthenticated={isAuthenticated}
-          path="/jobs"
-          component={JobList}
-          exact
-          handleEvent={handleLogin}
-        /> */}
-        <Route
-          render={(props) => (
-            <PageNotFound isAuthenticated={isAuthenticated} {...props} />
-          )}
-        />
-      </Switch>
+      <main className="mainBox">
+        {isAuthenticated && <SideBar open={open} setOpen={setDrawerOpen} />}
+        <Switch>
+          <PublicRoute
+            isAuthenticated={isAuthenticated}
+            path="/"
+            exact
+            component={Login}
+            handleEvent={handleLogin}
+          />
+          <PublicRoute
+            isAuthenticated={isAuthenticated}
+            path="/login"
+            exact
+            component={Login}
+            handleEvent={handleLogin}
+          />
+          <PublicRoute
+            isAuthenticated={isAuthenticated}
+            path="/forgot-password"
+            exact
+            component={ForgotPassword}
+            handleEvent={handleLogin}
+          />
+          <PublicRoute
+            isAuthenticated={isAuthenticated}
+            path="/reset-password"
+            exact
+            component={ResetPassword}
+            handleEvent={handleLogin}
+          />
+          <AuthenticatedRoute
+            isAuthenticated={isAuthenticated}
+            path="/employees"
+            component={Employees}
+            exact
+            handleEvent={handleLogin}
+          />
+          <AuthenticatedRoute
+            isAuthenticated={isAuthenticated}
+            path="/users"
+            component={Users}
+            exact
+            handleEvent={handleLogin}
+          />
+          <AuthenticatedRoute
+            isAuthenticated={isAuthenticated}
+            path="/organizations"
+            component={Organizations}
+            exact
+            handleEvent={handleLogin}
+          />
+          <AuthenticatedRoute
+            isAuthenticated={isAuthenticated}
+            path="/settings"
+            component={Settings}
+            exact
+            handleEvent={handleLogin}
+          />
+          <Route
+            render={(props) => (
+              <PageNotFound isAuthenticated={isAuthenticated} {...props} />
+            )}
+          />
+        </Switch>
+      </main>
     </Router>
   );
 };
